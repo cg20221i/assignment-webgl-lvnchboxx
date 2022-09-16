@@ -6,8 +6,35 @@ function main() {
   // vertecies
 
     var vertices = 
-    [0.8, 0.8, 0.5, 0.5, 0.0, 0.0, -0.5, -0.5 ];
+    // the number 5
+    [-0.2, 0.9,
+     -0.55, 0.9,
+     -0.55, 0.5,
+     -0.5, 0.5,
+     -0.5, 0.55,
+     -0.45,0.55,
+     -0.36,0.55,
+     -0.3, 0.5,
+     -0.3, 0.4,
+     -0.3, 0.3,
+     -0.38, 0.2,
+     -0.55, 0.2,
+     -0.55, 0.1,
+     -0.35, 0.1,
+     -0.23, 0.25,
+     -0.23, 0.55,
+     -0.3, 0.65,
+     -0.5, 0.65,
+     -0.5, 0.8,
+     -0.2, 0.8
+     
+    
 
+
+
+    ];
+
+    
       // create a linkedlist for storingthe vertecies in gpu
       var buffer = gl.createBuffer();
       gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -56,8 +83,9 @@ function main() {
   
     gl.clear(gl.COLOR_BUFFER_BIT);
     //drawing dot
-      gl.drawArrays(gl.TRIANGLE, 0, 4);
-
+      gl.drawArrays(gl.LINE_LOOP, 0, 20);
+      gl.drawArrays(gl.LINE_LOOP, 0, 1);
+      
 
 
 
