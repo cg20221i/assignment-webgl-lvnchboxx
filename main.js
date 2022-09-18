@@ -8,7 +8,7 @@ function main() {
     var vertices = 
     // the number 5
     [-0.58, 0.9,
-     -0.8, 0.9,
+     -0.8,  0.9,
      -0.86, 0.8,
      -0.86, 0.5,
      -0.83, 0.42,
@@ -28,26 +28,45 @@ function main() {
      -0.53, 0.55,
      -0.6,  0.65,
      -0.8,  0.65,
-     -0.8, 0.75,
-     -0.77,  0.8,
+     -0.8,  0.75,
+     -0.77, 0.8,
      -0.58, 0.8,
      -0.53, 0.85,
      
     //the number number 4
      0.55, 0.9,
-     0.5, 0.8,
-     0.5, 0.53,
+     0.5,  0.8,
+     0.5,  0.53,
      0.55, 0.45,
      0.75, 0.45,
      0.75, 0.1,
      0.80, 0.0,
-     0.8, 0.1,
-     0.8, 0.9,
+     0.8,  0.1,
+     0.8,  0.9,
      0.75, 0.8,
      0.75, 0.55,
-     0.58,  0.55,
+     0.58, 0.55,
      0.55, 0.6,
      0.55, 0.8,
+
+     //the alphabet N and A
+     // the alphabet N
+     //PHASE1
+     -0.5, -0.3,
+     -0.58, -0.1,
+     -0.5, -0.6,
+     -0.58, -0.6,
+     // phase 2
+     -0.58, -0.08,
+     -0.49, -0.3,
+     -0.38 , -0.6,
+     -0.3, -0.6,
+     // phase 3
+     -0.38, -0.08,
+     -0.3,  -0.08,
+     -0.38, -0.44,
+     -0.3,  -0.59,
+      //THE ALPHABET A
 
     ];
 
@@ -99,10 +118,14 @@ function main() {
     gl.clearColor(1.0, 0.56, 0.64, 1.0); 
   
     gl.clear(gl.COLOR_BUFFER_BIT);
-    //drawing dot
+    //drawing dot       loaded array,needed new array
       gl.drawArrays(gl.LINE_LOOP, 0, 25);
-      gl.drawArrays(gl.LINE_LOOP, 25, 13);
-      
+      gl.drawArrays(gl.LINE_LOOP, 25, 14);
+      //alphanet A phase 1
+      gl.drawArrays(gl.TRIANGLE_STRIP, 39, 4); 
+      // A phase 2
+      gl.drawArrays(gl.TRIANGLE_FAN, 43, 4);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 47, 4);
 
 
 
