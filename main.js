@@ -50,6 +50,7 @@ function main() {
      0.55, 0.8,
 
      //the alphabet N and A
+
      // the alphabet N
      //PHASE1
      -0.5, -0.3,
@@ -67,6 +68,30 @@ function main() {
      -0.38, -0.44,
      -0.3,  -0.59,
       //THE ALPHABET A
+      //phase 1
+     0.1, -0.6,
+     0.18, -0.6,
+     0.28, -0.1,
+
+    // phase 2
+    0.28, -0.1,
+    0.28, -0.4,
+    0.34, -0.45,
+    0.34, -0.1,
+    // phase 3
+    0.18 , -0.54,
+    0.18, -0.47,
+    0.28, -0.47,
+    0.28, -0.54,
+    // phase 4
+    0.28, -0.41,
+    0.34, -0.46,
+    0.28, -0.59,
+    // PHASE 5
+    0.28, -0.6,
+    0.34, -0.47,
+    0.34, -0.6
+
 
     ];
 
@@ -81,7 +106,7 @@ function main() {
     var vertexShaderCode = `
     attribute vec2 aPosition; 
     void main  (){
-    gl_PointSize = 10.0;
+    gl_PointSize = 5.0;
     gl_Position = vec4(aPosition, 0.0, 1.0);
     }
     `;
@@ -119,14 +144,23 @@ function main() {
   
     gl.clear(gl.COLOR_BUFFER_BIT);
     //drawing dot       loaded array,needed new array
-      gl.drawArrays(gl.LINE_LOOP, 0, 25);
-      gl.drawArrays(gl.LINE_LOOP, 25, 14);
-      //alphanet A phase 1
+      gl.drawArrays(gl.LINE_LOOP, 0, 25); //5
+      gl.drawArrays(gl.LINE_LOOP, 25, 14); // 4
+      //alphanet N phase 1
       gl.drawArrays(gl.TRIANGLE_STRIP, 39, 4); 
-      // A phase 2
+      // N phase 2
       gl.drawArrays(gl.TRIANGLE_FAN, 43, 4);
+      // N phase 3
       gl.drawArrays(gl.TRIANGLE_STRIP, 47, 4);
-
-
-
+      
+      // A phase 1
+      gl.drawArrays(gl.TRIANGLE_FAN, 51, 3);
+      // A phase 2
+      gl.drawArrays(gl.TRIANGLE_FAN, 54, 4);
+      // A phase 3
+      gl.drawArrays(gl.TRIANGLE_FAN, 58, 4);
+      //A phase 4
+      gl.drawArrays(gl.TRIANGLES, 62, 3);
+      // A final phase
+      gl.drawArrays(gl.TRIANGLES, 65, 3);
   }
