@@ -470,6 +470,29 @@ const indicesA = [
 
 ];
 
+const vertexcube = [
+ //Cube
+ 1, 1, 1,     1, 0, 0,     // Index:  0    kanan atas depan
+  1, -1, 1,     1, 0, 0,       // Index:  1
+  -1, -1, 1,     1, 0, 0,    // Index:  2
+  -1,  1, 1,     1, 0, 0,     // Index:  3
+
+  1, 1,  -1,     1, 1, 0,       // Index:  4 kanan atas belakang
+  1, -1,  -1,     1, 1, 0,      // Index:  5
+  -1, -1, -1,     1, 1, 0,    // Index:  6
+  -1,  1,  -1,     1, 1, 0,     // Index:  7
+];
+
+const indicescube = [
+  0, 1, 2,     0, 2, 3,     // Face A
+  4, 5, 6,     4, 6, 7,     // Face B
+  // 0,1,4,      4,5,0,  
+  0,3,4,       3,4,7, 
+  1,2,5,       2,5,6,
+  20, 21, 22,  20, 22, 23,0   // Face F 
+];
+
+
 const objects = [
     {
       vertices: vertex5,
@@ -495,6 +518,12 @@ const objects = [
       length: indicesA.length,
       type: gl.TRIANGLES,
     },
+    {
+      vertices: vertexcube,
+      indices: indicescube,
+      length: indicescube.length,
+      type: gl.TRIANGLES,
+    }
   ]
 
 const vertexShader = gl.createShader(gl.VERTEX_SHADER);
@@ -670,6 +699,28 @@ const animate5 = () =>{
 
     draw(objects[3].vertices, objects[3].indices, 0, objects[3].length, objects[3].type);
   }
+//cube
+  const animatecube = () =>{
+    var model = glMatrix.mat4.create();
+
+    glMatrix.mat4.rotateX(
+      model, model, rotateX
+    );
+
+    glMatrix.mat4.rotateY(
+      model, model, rotateY
+    );
+
+    var mWorld = gl.getUniformLocation(program, "mWorld");
+    var mView = gl.getUniformLocation(program, "mView");
+    var mProj = gl.getUniformLocation(program, "mProj");
+
+    gl.uniformMatrix4fv(mWorld,false, model);
+    gl.uniformMatrix4fv(mView, false, view);
+    gl.uniformMatrix4fv(mProj, false, perspective);
+
+    draw(objects[4].vertices, objects[4].indices, 0, objects[4].length, objects[4].type);
+  }
   
   function onKeydown(event) {
     if (event.keyCode == 65 || event.keyCode == 37) { // a / arrow kiri
@@ -683,6 +734,15 @@ const animate5 = () =>{
     } else if (event.keyCode == 83 || event.keyCode == 40) { // s / arrow bawah
       rotateX += 0.2;
     }
+
+    if (event.keyCode == 74 ) { // j / downward
+      object.y -= 1;
+    } else if (event.keyCode == 73) { // i / keatasa 
+      object.y += 1;
+    }
+
+    
+
   }
   document.addEventListener("keydown", onKeydown);
 
@@ -694,6 +754,7 @@ const animate5 = () =>{
     animate4();
     animateN();
     animateA();
+    animatecube();
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
