@@ -472,24 +472,44 @@ const indicesA = [
 
 const vertexcube = [
  //Cube
- 1, 1, 1,     1, 0, 0,     // Index:  0    kanan atas depan
-  1, -1, 1,     1, 0, 0,       // Index:  1
-  -1, -1, 1,     1, 0, 0,    // Index:  2
-  -1,  1, 1,     1, 0, 0,     // Index:  3
+ 1, 1, 1,     1, 1, 1,     // Index:  0    kanan atas depan
+  1, -1, 1,     1, 1, 1,       // Index:  1
+  -1, -1, 1,     1, 1, 1,    // Index:  2
+  -1,  1, 1,     1, 1, 1,     // Index:  3
 
-  1, 1,  -1,     1, 1, 0,       // Index:  4 kanan atas belakang
-  1, -1,  -1,     1, 1, 0,      // Index:  5
-  -1, -1, -1,     1, 1, 0,    // Index:  6
-  -1,  1,  -1,     1, 1, 0,     // Index:  7
+  1, 1,  -1,     1, 1, 1,       // Index:  4 kanan atas belakang
+  1, -1,  -1,     1, 1, 1,      // Index:  5
+  -1, -1, -1,     1, 1, 1,    // Index:  6
+  -1,  1,  -1,     1, 1, 1,     // Index:  7
+  
+  -1, -1, -1,     1, 1, 0,      // Index:  8
+  -1,  1, -1,     1, 1, 0,      // Index:  9
+  -1,  1,  -1,     1, 1, 0,      // Index: 10
+  -1, -1,  -1,     1, 1, 0,       // Index: 11
+
+  1, -1, -1,     0, 0, 1,       // Index: 12
+  1,  1, -1,     0, 0, 1,       // Index: 13
+  1,  1,  -1,     0, 0, 1,       // Index: 14
+  1, -1,  -1,     0, 0, 1,      // Index: 15
+
+  -1, -1, -1,     1, 0.5, 0,    // Index: 16
+  -1, -1,  -1,     1, 0.5, 0,     // Index: 17
+  1, -1,  -1,     1, 0.5, 0,     // Index: 18
+  1, -1, -1,     1, 0.5, 0,     // Index: 19
+
+  -1,  1, -1,     1, 1, 1,       // Index: 20
+  -1,  1, -1,     1, 1, 1,        // Index: 21
+  1,  1,  -1,     1, 1, 1,        // Index: 22
+  1,  1, -1,     1, 1, 1,        // Index: 23
 ];
 
 const indicescube = [
   0, 1, 2,     0, 2, 3,     // Face A
   4, 5, 6,     4, 6, 7,     // Face B
-  // 0,1,4,      4,5,0,  
-  0,3,4,       3,4,7, 
-  1,2,5,       2,5,6,
-  20, 21, 22,  20, 22, 23,0   // Face F 
+  8,9,10,      8,10,11,
+  12,13,14,    12,14,15,
+   1,2,5,       2,5,6,
+ 20, 21, 22,  20, 22, 23,0   // Face F 
 ];
 
 
@@ -719,6 +739,8 @@ const animate5 = () =>{
     gl.uniformMatrix4fv(mView, false, view);
     gl.uniformMatrix4fv(mProj, false, perspective);
 
+
+    
     draw(objects[4].vertices, objects[4].indices, 0, objects[4].length, objects[4].type);
   }
   
